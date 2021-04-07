@@ -52,7 +52,7 @@ def main():
         dp = d_p.get()             # How accepting to degradation of circles are you willing to be
         circles = cv2.HoughCircles(grayIm,cv2.HOUGH_GRADIENT,dp,min_distance,param1=arg1,param2=arg2, minRadius=0,maxRadius=60)
         if circles is not None:
-            circles = (np.around(circles))
+            circles = np.uint16(np.around(circles,0))
             for i in circles[0,:]:
                 # draw circle
                 cv2.circle(resizeIm,(i[0],i[1]),i[2],(0,255,0),2)
